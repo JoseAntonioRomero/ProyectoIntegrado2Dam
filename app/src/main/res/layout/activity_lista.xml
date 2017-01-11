@@ -1,0 +1,45 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.joseantonio.proyecto2.ActivityLista">
+
+    <ImageView
+        android:id="@+id/back_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Contactos"
+        android:id="@+id/contac"
+        android:layout_marginLeft="70dp"
+        android:linksClickable="false"
+        android:textSize="50dp"
+        android:textStyle="bold|italic"
+        android:textColor="#46a5ff"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/reciclador"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:padding="3dp"
+        android:scrollbars="vertical"
+        android:layout_weight="0.84"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/contac"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="20dp" />
+
+</RelativeLayout>

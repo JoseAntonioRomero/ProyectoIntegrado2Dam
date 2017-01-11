@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Proyecto2</string>
+
+
+    <string name="action_settings">Ajustes</string>
+    <string name="title_activity_registro">Registro</string>
+    <string name="title_activity_activity_lista">Lista</string>
+    <string name="title_activity_alarmas">Alarmas</string>
+</resources>
