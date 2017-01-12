@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.joseantonio.proyecto2.ActivityLista">
+    tools:context="com.example.joseantonio.proyecto2.Activitys.ActivityLista">
 
     <ImageView
         android:id="@+id/back_image"

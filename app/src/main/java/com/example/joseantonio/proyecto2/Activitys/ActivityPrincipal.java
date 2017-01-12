@@ -1,8 +1,9 @@
-package com.example.joseantonio.proyecto2;
+package com.example.joseantonio.proyecto2.Activitys;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,43 +11,55 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.joseantonio.proyecto2.R;
 import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class Registro extends AppCompatActivity {
+public class ActivityPrincipal extends AppCompatActivity {
 
-    @InjectView(R.id.input_nombre)
-    EditText _nombreText;
+    @InjectView(R.id.input_name)
+    EditText _nameText;
     @InjectView(R.id.input_email)
     EditText _emailText;
-    @InjectView(R.id.input_contra)
-    EditText _contraText;
-    @InjectView(R.id.input_telefono)
-    EditText _telefonoText;
-    Button aceptar;
-    Button cancelar;
+    Button registro;
+    Button iniciar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.activity_principal);
 
+        ActionBar actionBar = getSupportActionBar();
         ButterKnife.inject(this);
         ImageView back_image = (ImageView) findViewById(R.id.back_image);
-        Picasso.with(getApplicationContext()).load(R.drawable.wallpaper_login).fit().centerCrop().into(back_image);
-        aceptar=(Button)findViewById(R.id.aceptar);
-        cancelar=(Button)findViewById(R.id.cancelar);
+        Picasso.with(getApplicationContext()).load(R.drawable.back_image).fit().centerCrop().into(back_image);
+        registro=(Button)findViewById(R.id.registrarse);
+        iniciar=(Button)findViewById(R.id.iniciar);
+        actionBar.hide();
 
-        cancelar.setOnClickListener(new View.OnClickListener() {
+
+        registro.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ActivityPrincipal.class);
+                // Start the Signup activity
+                Intent intent = new Intent(getApplicationContext(), Registro.class);
                 startActivity(intent);
             }
         });
+
+        iniciar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // Start the Signup activity
+                Intent intent = new Intent(getApplicationContext(), ActivityLista.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
@@ -54,7 +67,7 @@ public class Registro extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_registro, menu);
+        getMenuInflater().inflate(R.menu.menu_activity_principal, menu);
         return true;
     }
 

@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ActivityPrincipal"
+            android:name=".Activitys.ActivityPrincipal"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,17 +17,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Registro"
+            android:name=".Activitys.Registro"
             android:label="@string/title_activity_registro" >
         </activity>
         <activity
-            android:name=".ActivityLista"
+            android:name=".Activitys.ActivityLista"
             android:label="@string/title_activity_activity_lista" >
         </activity>
         <activity
-            android:name=".alarmas"
+            android:name=".Activitys.alarmas"
             android:label="@string/title_activity_alarmas" >
         </activity>
     </application>
-
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 </manifest>

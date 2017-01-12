@@ -6,4 +6,8 @@
     <string name="title_activity_registro">Registro</string>
     <string name="title_activity_activity_lista">Lista</string>
     <string name="title_activity_alarmas">Alarmas</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

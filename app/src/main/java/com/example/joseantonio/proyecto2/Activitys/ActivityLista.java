@@ -1,18 +1,19 @@
-package com.example.joseantonio.proyecto2;
+package com.example.joseantonio.proyecto2.Activitys;
 
-import android.content.ClipData;
-import android.content.Intent;
+import android.database.Cursor;
+import android.provider.ContactsContract;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.joseantonio.proyecto2.Adaptadores.Adaptador;
+import com.example.joseantonio.proyecto2.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -31,46 +32,37 @@ public class ActivityLista extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
+        TextView texto = (TextView) findViewById(R.id.contac);
         ImageView back_image = (ImageView) findViewById(R.id.back_image);
-        Picasso.with(getApplicationContext()).load(R.drawable.wallpaper_login).fit().centerCrop().into(back_image);
+        Picasso.with(getApplicationContext()).load(R.drawable.back_image).fit().centerCrop().into(back_image);
         recycler = (RecyclerView) findViewById(R.id.reciclador);
-
-        items.add(new Contacto(R.drawable.avatar, "Juan Delgado", "bla, bla, bla...."));
-        items.add(new Contacto(R.drawable.avatar, "Maria Pérez", "bla, bla, bla...."));
-        items.add(new Contacto(R.drawable.avatar, "Jose Andrés ", "bla, bla, bla...."));
-        items.add(new Contacto(R.drawable.avatar, "Carlos López", "bla, bla, bla...."));
-        items.add(new Contacto(R.drawable.avatar, "Jorge Juan", "bla, bla, bla...."));
-        items.add(new Contacto(R.drawable.avatar, "Andrés Iranzo", "bla, bla, bla...."));
-        items.add(new Contacto(R.drawable.avatar, "Ivan Ferrero", "bla, bla, bla...."));
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         recycler.setHasFixedSize(true);
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);
         adapter = new Adaptador(items);
         recycler.setAdapter(adapter);
+        contactos();
 
     }
-/*
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+
+    public void contactos() {
+
+                Cursor c = managedQuery(ContactsContract.Contacts.CONTENT_URI, new String[]{ContactsContract.Contacts.DISPLAY_NAME},
+                        ContactsContract.Contacts.IN_VISIBLE_GROUP, null, ContactsContract.Contacts.DISPLAY_NAME);
+                /*Cursor n = managedQuery(ContactsContract.Contacts.CONTENT_URI, new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER},
+                ContactsContract.Contacts.IN_VISIBLE_GROUP, null, ContactsContract.CommonDataKinds.Phone.NUMBER);*/
 
 
-        ((Adaptador.ContactoViewHolder) adapter).setOnItemClickListener(new Adaptador.ContactoViewHolder.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                ClipData.Item item = items[position];
+        while (c.moveToNext()) {
+            String contactos = c.getString(c.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
+            //Integer numero=n.getInt(n.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+            items.add(new Contacto(R.drawable.avatar, contactos, 658952365));
 
-                Intent intent = new Intent(getApplicationContext(), ActivityPrincipal.class);
-                intent.putExtra("item", item);
-
-                startActivity(intent);
-            }
-        });
+        }
     }
-*/
-
 
         @Override
     public boolean onCreateOptionsMenu(Menu menu) {
